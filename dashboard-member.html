@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Member Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+<!-- Header -->
+<div class="p-6 flex justify-between items-center bg-white shadow">
+  <h1 class="text-2xl font-bold text-blue-900">🧑‍💳 Member Dashboard</h1>
+  <button class="text-sm text-blue-600">Logout</button>
+</div>
+<!-- Profile Section -->
+<div class="px-6 mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+  <div class="bg-white p-4 rounded-xl shadow col-span-1 flex flex-col items-center">
+    <img src="https://via.placeholder.com/120" class="rounded-full mb-4" alt="Profile Photo" />
+    <h2 class="text-lg font-bold text-gray-800">Rajiv Singh</h2>
+    <p class="text-sm text-gray-600">HQ: Andal</p>
+    <p class="text-sm text-gray-600">SFA ID: SFA1234</p>
+    <p class="text-sm text-gray-600">Nominee: Rani Singh</p>
+    <p class="text-sm text-gray-600">Join Date: Jan 2023</p>
+  </div>
+
+  <!-- Payment Timeline -->
+  <div class="bg-white p-4 rounded-xl shadow col-span-2">
+    <h3 class="text-lg font-semibold text-gray-800 mb-4">📅 Monthly Payment Timeline</h3>
+    <div class="grid grid-cols-4 gap-4 text-sm">
+      <div class="bg-green-100 text-green-800 px-3 py-2 rounded text-center">Jan ✅</div>
+      <div class="bg-green-100 text-green-800 px-3 py-2 rounded text-center">Feb ✅</div>
+      <div class="bg-yellow-100 text-yellow-800 px-3 py-2 rounded text-center">Mar ⏳</div>
+      <div class="bg-gray-100 text-gray-600 px-3 py-2 rounded text-center">Apr</div>
+      <div class="bg-gray-100 text-gray-600 px-3 py-2 rounded text-center">May</div>
+      <div class="bg-gray-100 text-gray-600 px-3 py-2 rounded text-center">Jun</div>
+      <div class="bg-gray-100 text-gray-600 px-3 py-2 rounded text-center">Jul</div>
+      <div class="bg-gray-100 text-gray-600 px-3 py-2 rounded text-center">Aug</div>
+      <div class="bg-gray-100 text-gray-600 px-3 py-2 rounded text-center">Sep</div>
+      <div class="bg-gray-100 text-gray-600 px-3 py-2 rounded text-center">Oct</div>
+      <div class="bg-gray-100 text-gray-600 px-3 py-2 rounded text-center">Nov</div>
+      <div class="bg-gray-100 text-gray-600 px-3 py-2 rounded text-center">Dec</div>
+    </div>
+  </div>
+</div>
+
+<!-- Action Buttons -->
+<div class="px-6 mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+  <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow">
+    ✏️ Request Info Update
+  </button>
+  <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded shadow">
+    🔁 Request HQ Transfer
+  </button>
+  <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded shadow">
+    📤 Upload Payment Screenshot
+  </button>
+</div>
+
+<!-- Contact Panel -->
+<div class="px-6 mt-10 mb-10">
+  <h3 class="text-lg font-semibold text-gray-800 mb-3">📞 Contact Admin / Collection Member</h3>
+  <div class="bg-white p-4 rounded-xl shadow space-y-3">
+    <p class="text-sm text-gray-700">📱 Collection Member: +91 98765 43210</p>
+    <p class="text-sm text-gray-700">📧 Admin Email: sfa.admin@rail.in</p>
+    <p class="text-sm text-gray-700">💬 WhatsApp Group: <a href="#" class="text-blue-600 underline">Join</a></p>
+  </div>
+</div>
+
+</body>
+</html>

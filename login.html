@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SFA Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: linear-gradient(-45deg, #1e3a8a, #0f766e, #0f172a, #1e40af);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="text-white overflow-y-auto">
+
+  <div class="flex flex-col md:flex-row min-h-screen">
+
+    <!-- Left Info Section -->
+    <div class="md:w-3/5 w-full flex flex-col justify-between p-6 space-y-4">
+      <div class="bg-blue-800 text-white py-2 px-4 rounded-full text-center shadow-xl w-max mx-auto mb-2">
+        <h1 class="text-3xl font-bold">SFA GROUP</h1>
+      </div>
+
+      <div class="bg-white bg-opacity-10 p-4 rounded-lg shadow text-center max-w-md mx-auto">
+        <p class="text-base">
+          SFA (Service for All) Group is a collective initiative of railway professionals across India, focused on collaboration, welfare, and innovation within our community.
+        </p>
+      </div>
+
+      <!-- Founders -->
+      <div class="text-center space-y-2">
+        <h2 class="text-lg font-semibold text-blue-200">Founding Members</h2>
+        <div class="flex justify-center flex-wrap gap-6">
+          <div class="flex flex-col items-center">
+            <img src="https://randomuser.me/api/portraits/men/10.jpg" class="w-16 h-16 rounded-full border-4 border-blue-400 shadow-lg transform transition-transform duration-300 hover:scale-110" />
+            <span class="text-sm mt-1 font-semibold text-blue-100">Rahul Sharma</span>
+            <span class="text-xs italic text-green-200">Founder</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <img src="https://randomuser.me/api/portraits/men/11.jpg" class="w-16 h-16 rounded-full border-2 border-white shadow transform transition-transform duration-300 hover:scale-110" />
+            <span class="text-sm mt-1 font-semibold">Ankit Verma</span>
+            <span class="text-xs text-gray-200">Core Member</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <img src="https://randomuser.me/api/portraits/women/12.jpg" class="w-16 h-16 rounded-full border-2 border-white shadow transform transition-transform duration-300 hover:scale-110" />
+            <span class="text-sm mt-1 font-semibold">Priya Desai</span>
+            <span class="text-xs text-gray-200">Core Member</span>
+          </div>
+        </div>
+
+        <h3 class="text-md font-medium mt-4 text-green-200">Co-Founders</h3>
+        <div class="flex justify-center flex-wrap gap-6">
+          <div class="flex flex-col items-center">
+            <img src="https://randomuser.me/api/portraits/women/15.jpg" class="w-16 h-16 rounded-full border-2 border-white shadow transform transition-transform duration-300 hover:scale-110" />
+            <span class="text-sm mt-1 font-semibold">Sneha Reddy</span>
+            <span class="text-xs text-gray-200">Co-Founder</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <img src="https://randomuser.me/api/portraits/men/16.jpg" class="w-16 h-16 rounded-full border-2 border-white shadow transform transition-transform duration-300 hover:scale-110" />
+            <span class="text-sm mt-1 font-semibold">Ravi Singh</span>
+            <span class="text-xs text-gray-200">Co-Founder</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <img src="https://randomuser.me/api/portraits/women/17.jpg" class="w-16 h-16 rounded-full border-2 border-white shadow transform transition-transform duration-300 hover:scale-110" />
+            <span class="text-sm mt-1 font-semibold">Meera Joshi</span>
+            <span class="text-xs text-gray-200">Co-Founder</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Info -->
+      <div class="text-center text-sm mt-4 space-y-2 text-blue-100">
+        <a href="sfa-rules.html" class="underline">📘 View SFA Rules</a>
+        <div class="flex flex-col items-center mt-2">
+          <span>Developed By</span>
+          <img src="https://randomuser.me/api/portraits/men/90.jpg" class="w-10 h-10 rounded-full mt-1 shadow border border-white" />
+          <span class="text-sm font-semibold">Amit Kumar</span>
+          <span class="text-xs italic text-gray-300">Web Developer</span>
+        </div>
+        <div class="space-y-1">
+          <p>📞 Contact: +91 9876543210</p>
+          <p>📧 Email: support@sfa.org.in</p>
+          <p>🌐 Website: <a href="#" class="underline">www.sfa.org.in</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Login Section -->
+    <div class="md:w-2/5 w-full flex items-center justify-center p-6">
+      <div class="bg-white text-gray-800 rounded-2xl shadow-2xl p-8 w-full max-w-lg space-y-6 ring-2 ring-blue-300 ring-opacity-30">
+
+        <div class="flex flex-col items-center">
+          <img src="assets/logo.png" alt="SFA Logo" class="w-20 h-20 mb-2" />
+          <h2 class="text-xl font-bold text-blue-700">WELCOME TO SFA GROUP</h2>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium">Login as</label>
+            <select id="userType" required class="w-full mt-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 ease-in-out">
+              <option disabled selected>Select User Type</option>
+              <option>Super Admin</option>
+              <option>Railway Admin</option>
+              <option>Division Admin</option>
+              <option>Lobby Admin</option>
+              <option>Collection Member</option>
+              <option>Member</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium">Username or Email</label>
+            <input type="text" id="username" required autofocus class="w-full mt-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 ease-in-out" placeholder="Enter username or email"/>
+          </div>
+
+          <div class="relative">
+            <label class="block text-sm font-medium">Password</label>
+            <input type="password" id="password" required class="w-full mt-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 ease-in-out" placeholder="••••••••" />
+            <span onclick="togglePassword()" class="absolute right-3 top-9 text-sm text-blue-600 hover:underline cursor-pointer">Show</span>
+          </div>
+
+          <p id="errorMsg" class="text-red-600 text-sm text-center hidden">❌ Invalid ID or Password</p>
+
+          <div class="text-right text-sm">
+            <a href="#" class="text-blue-600 hover:underline">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 font-semibold transition-all duration-300">
+            Login
+          </button>
+        </form>
+
+        <!-- Trigger Text -->
+        <div class="text-center pt-2 text-sm">
+          Not a member yet? 
+          <button id="joinBtn" class="text-blue-600 hover:underline font-medium">Join SFA</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Declaration Modal -->
+  <div id="declarationModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-2xl shadow-xl p-6 w-full max-w-lg space-y-4 relative animate-fade-in">
+      <h3 class="text-lg font-semibold text-blue-700">SFA Membership Declaration</h3>
+      <div class="max-h-60 overflow-y-auto text-sm text-gray-700 space-y-2">
+        <p>1. I agree to abide by the rules and guidelines of the SFA Group.</p>
+        <p>2. I will maintain professionalism and integrity while being part of the group.</p>
+        <p>3. I understand that my membership may be revoked for violating SFA rules.</p>
+        <p>4. I agree to contribute positively to the collective goals of SFA.</p>
+      </div>
+      <div class="flex justify-end space-x-3 pt-4">
+        <button id="declineBtn" class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">Decline</button>
+        <button id="acceptBtn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Accept & Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const users = {
+      "Super Admin": { username: "superadmin", password: "super123", redirect: "dashboard-superadmin.html" },
+      "Railway Admin": { username: "railway1", password: "rail123", redirect: "dashboard-railway.html" },
+      "Division Admin": { username: "division1", password: "div123", redirect: "dashboard-division.html" },
+      "Lobby Admin": { username: "lobby1", password: "lobby123", redirect: "dashboard-lobby.html" },
+      "Collection Member": { username: "collector1", password: "col123", redirect: "dashboard-collection-member.html" },
+      "Member": { username: "member1", password: "mem123", redirect: "dashboard-member.html" }
+    };
+
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const userType = document.getElementById("userType").value;
+      const username = document.getElementById("username").value.trim().toLowerCase();
+      const password = document.getElementById("password").value;
+      const errorMsg = document.getElementById("errorMsg");
+      const user = users[userType];
+
+      const loginBtn = this.querySelector("button[type='submit']");
+      loginBtn.textContent = "Logging in...";
+      loginBtn.disabled = true;
+
+      if (user && username === user.username && password === user.password) {
+        errorMsg.classList.add("hidden");
+        setTimeout(() => window.location.href = user.redirect, 800);
+      } else {
+        errorMsg.classList.remove("hidden");
+        loginBtn.textContent = "Login";
+        loginBtn.disabled = false;
+      }
+    });
+
+    function togglePassword() {
+      const passField = document.getElementById("password");
+      const toggle = document.querySelector("span[onclick='togglePassword()']");
+      if (passField.type === "password") {
+        passField.type = "text";
+        toggle.textContent = "Hide";
+      } else {
+        passField.type = "password";
+        toggle.textContent = "Show";
+      }
+    }
+
+    document.getElementById("userType").addEventListener("change", function () {
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("errorMsg").classList.add("hidden");
+    });
+
+    document.getElementById("joinBtn").addEventListener("click", () => {
+      document.getElementById("declarationModal").classList.remove("hidden");
+    });
+
+    document.getElementById("declineBtn").addEventListener("click", () => {
+      document.getElementById("declarationModal").classList.add("hidden");
+    });
+
+    document.getElementById("acceptBtn").addEventListener("click", () => {
+      document.getElementById("declarationModal").classList.add("hidden");
+      window.location.href = "join-request.html";
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Railway Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+<!-- Top Bar -->
+<div class="p-6 flex justify-between items-center bg-white shadow">
+  <h1 class="text-2xl font-bold text-blue-900">🚄 Railway Dashboard</h1>
+  <button class="text-sm text-blue-600">Logout</button>
+</div>
+
+<!-- Filters Section -->
+<div class="p-6 space-y-6">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <!-- Railway Dropdown -->
+    <div>
+      <label class="block mb-1 font-medium">Select Railway</label>
+      <select id="railwaySelect" onchange="updateDivisionOptions()" class="p-2 border rounded w-full">
+        <option value="" selected disabled>Choose Railway</option>
+        <option value="ER">ER</option>
+        <option value="ECR">ECR</option>
+        <option value="SECR">SECR</option>
+        <option value="NR">NR</option>
+        <option value="NFR">NFR</option>
+        <option value="SR">SR</option>
+        <option value="SCR">SCR</option>
+        <option value="WR">WR</option>
+        <option value="CR">CR</option>
+        <option value="NER">NER</option>
+        <option value="NWR">NWR</option>
+        <option value="WCR">WCR</option>
+      </select>
+      <p id="zoneFullName" class="mt-2 text-sm text-gray-600 italic"></p>
+    </div>
+
+    <!-- Division Dropdown -->
+    <div>
+      <label class="block mb-1 font-medium">Select Division</label>
+      <select id="divisionSelect" class="p-2 border rounded w-full">
+        <option value="" selected disabled>Choose Division</option>
+      </select>
+    </div>
+
+    <!-- Month Dropdown -->
+    <div>
+      <label class="block mb-1 font-medium">Select Month</label>
+      <select class="p-2 border rounded w-full">
+        <option>April</option>
+        <option>March</option>
+        <option>February</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- Stat Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-6">
+  <div class="bg-white p-4 rounded-xl shadow text-center">
+    <h2 class="text-lg font-semibold text-gray-600">Total Divisions</h2>
+    <p class="text-3xl font-bold text-blue-700">8</p>
+  </div>
+  <div class="bg-white p-4 rounded-xl shadow text-center">
+    <h2 class="text-lg font-semibold text-gray-600">Completion %</h2>
+    <p class="text-3xl font-bold text-green-600">76%</p>
+  </div>
+  <div class="bg-white p-4 rounded-xl shadow text-center">
+    <h2 class="text-lg font-semibold text-gray-600">Pending Requests</h2>
+    <p class="text-3xl font-bold text-red-500">12</p>
+  </div>
+</div>
+
+<!-- Lobby Admins Table -->
+<div class="px-6 mt-8">
+  <h2 class="text-xl font-bold mb-4 text-gray-800">👥 Lobby Admins</h2>
+  <div class="overflow-auto bg-white rounded-xl shadow">
+    <table class="min-w-full text-left text-sm">
+      <thead class="bg-blue-100 text-blue-800">
+        <tr>
+          <th class="px-6 py-3">Name</th>
+          <th class="px-6 py-3">Email</th>
+          <th class="px-6 py-3">Lobby</th>
+          <th class="px-6 py-3">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b">
+          <td class="px-6 py-4">Ravi Das</td>
+          <td class="px-6 py-4">ravi@example.com</td>
+          <td class="px-6 py-4">Howrah HQ</td>
+          <td class="px-6 py-4 text-green-600">Active</td>
+        </tr>
+        <tr class="border-b">
+          <td class="px-6 py-4">Mita Sen</td>
+          <td class="px-6 py-4">mita@railway.in</td>
+          <td class="px-6 py-4">Malda HQ</td>
+          <td class="px-6 py-4 text-red-500">Inactive</td>
+        </tr>
+        <!-- More rows can be dynamically added -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- JS for dynamic dropdown -->
+<script>
+  const railwayData = {
+    ER: {
+      name: "Eastern Railway",
+      divisions: ["Howrah", "Sealdah", "Asansol", "Malda"]
+    },
+    ECR: {
+      name: "East Central Railway",
+      divisions: ["Danapur", "Dhanbad", "Mughalsarai", "Samastipur"]
+    },
+    SECR: {
+      name: "South East Central Railway",
+      divisions: ["Bilaspur", "Raipur", "Nagpur"]
+    },
+    NR: {
+      name: "Northern Railway",
+      divisions: ["Delhi", "Lucknow", "Firozpur", "Ambala"]
+    },
+    NFR: {
+      name: "Northeast Frontier Railway",
+      divisions: ["Katihar", "Tinsukia", "Rangiya", "Lumding"]
+    },
+    SR: {
+      name: "Southern Railway",
+      divisions: ["Chennai", "Madurai", "Salem", "Tiruchirappalli"]
+    },
+    SCR: {
+      name: "South Central Railway",
+      divisions: ["Secunderabad", "Hyderabad", "Vijayawada", "Guntakal"]
+    },
+    WR: {
+      name: "Western Railway",
+      divisions: ["Mumbai", "Vadodara", "Ahmedabad", "Ratlam"]
+    },
+    CR: {
+      name: "Central Railway",
+      divisions: ["Mumbai", "Bhusawal", "Solapur", "Pune"]
+    },
+    NER: {
+      name: "North Eastern Railway",
+      divisions: ["Gorakhpur", "Lucknow", "Izzatnagar"]
+    },
+    NWR: {
+      name: "North Western Railway",
+      divisions: ["Jaipur", "Jodhpur", "Ajmer", "Bikaner"]
+    },
+    WCR: {
+      name: "West Central Railway",
+      divisions: ["Jabalpur", "Bhopal", "Kota"]
+    }
+  };
+
+  function updateDivisionOptions() {
+    const railwayCode = document.getElementById("railwaySelect").value;
+    const divisionSelect = document.getElementById("divisionSelect");
+    const fullNameDisplay = document.getElementById("zoneFullName");
+
+    divisionSelect.innerHTML = '<option disabled selected>Choose Division</option>';
+
+    if (railwayData[railwayCode]) {
+      const { name, divisions } = railwayData[railwayCode];
+
+      // Show full zone name
+      fullNameDisplay.textContent = name;
+
+      // Populate division dropdown
+      divisions.forEach((division) => {
+        const opt = document.createElement("option");
+        opt.value = division;
+        opt.textContent = division;
+        divisionSelect.appendChild(opt);
+      });
+    } else {
+      fullNameDisplay.textContent = "";
+    }
+  }
+</script>
+
+</body>
+</html>

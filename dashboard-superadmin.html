@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Super Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .sidebar {
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(-100%);
+    }
+    .sidebar.show {
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+<!-- Sidebar Menu -->
+<aside id="sidebar"
+       class="sidebar fixed top-0 left-0 h-full w-64 bg-blue-800 text-white p-6 space-y-6 z-40">
+  <div class="text-xl font-bold mb-8">SFA Admin</div>
+  <nav class="space-y-4">
+    <a href="dashboard-superadmin.html" class="block hover:text-blue-200">Dashboard</a>
+    <a href="join-request.html" class="block hover:text-blue-200">Join Requests</a>
+    <a href="update-request.html" class="block hover:text-blue-200">Update Requests</a>
+    <a href="collection-report.html" class="block hover:text-blue-200">Reports</a>
+    <a href="messages.html" class="block hover:text-blue-200">Messages</a>
+    <a href="change-password.html" class="block hover:text-blue-200">Change Password</a>
+    <a href="login.html" class="block hover:text-blue-200">Logout</a>
+  </nav>
+</aside>
+
+<!-- Overlay -->
+<div id="overlay"
+     class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"></div>
+
+<!-- Page Content -->
+<div class="min-h-screen p-6">
+  <!-- Top Navbar -->
+  <div class="flex justify-between items-center mb-6">
+    <div class="flex items-center space-x-4">
+      <!-- Menu Button -->
+      <button id="menuButton" class="text-blue-800 focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2"
+             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <h1 class="text-2xl font-bold text-blue-900">Super Admin Dashboard</h1>
+    </div>
+    <div class="flex items-center space-x-4">
+      <span class="text-gray-600">🔔</span>
+      <span class="text-gray-600">👤</span>
+    </div>
+  </div>
+
+  <!-- Content Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <div class="bg-white p-4 rounded-xl shadow">
+      <h3 class="text-sm text-gray-500">Total Members</h3>
+      <p class="text-xl font-semibold text-blue-800">1,540</p>
+    </div>
+    <div class="bg-white p-4 rounded-xl shadow">
+      <h3 class="text-sm text-gray-500">Pending Requests</h3>
+      <p class="text-xl font-semibold text-yellow-600">37</p>
+    </div>
+    <div class="bg-white p-4 rounded-xl shadow">
+      <h3 class="text-sm text-gray-500">Monthly Collection</h3>
+      <p class="text-xl font-semibold text-green-700">82%</p>
+    </div>
+  </div>
+
+  <!-- Chart -->
+  <div class="bg-white p-6 rounded-xl shadow mb-6">
+    <h2 class="text-lg font-bold text-gray-700 mb-4">Monthly Collection Stats</h2>
+    <div class="h-48 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">
+      [Chart Placeholder]
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-semibold">
+      Approve Join Requests
+    </button>
+    <button class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg font-semibold">
+      Send Notification
+    </button>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+  const sidebar = document.getElementById("sidebar");
+  const menuButton = document.getElementById("menuButton");
+  const overlay = document.getElementById("overlay");
+
+  menuButton.addEventListener("click", () => {
+    sidebar.classList.add("show");
+    overlay.classList.remove("hidden");
+  });
+
+  overlay.addEventListener("click", () => {
+    sidebar.classList.remove("show");
+    overlay.classList.add("hidden");
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Join Request Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .step { display: none; }
+    .step.active { display: block; }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+<!-- Header -->
+<div class="p-6 flex justify-between items-center bg-white shadow">
+  <h1 class="text-2xl font-bold text-blue-900">📝 Join Request Form</h1>
+  <a href="login.html" class="text-sm text-blue-600 hover:underline">🏠 Home</a>
+</div>
+
+<!-- Form Container -->
+<div class="max-w-5xl mx-auto bg-white p-6 mt-6 rounded-xl shadow">
+  <form id="joinForm">
+    <!-- Step 1 -->
+    <div class="step active" id="step1">
+      <h2 class="text-xl font-semibold mb-4">Step 1: Select Location</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <select id="zone" class="border p-2 rounded" required>
+          <option value="" disabled selected>Select Railway Zone</option>
+        </select>
+        <select id="division" class="border p-2 rounded" required>
+          <option value="" disabled selected>Select Division</option>
+        </select>
+        <select id="hq" class="border p-2 rounded" required>
+          <option value="" disabled selected>Select HQ</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step" id="step2">
+      <h2 class="text-xl font-semibold mb-4">Step 2: Personal Info</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <input type="text" placeholder="Full Name" class="border p-2 rounded" required />
+        <input type="text" placeholder="PF No" class="border p-2 rounded" required />
+        <input type="text" placeholder="HRMS ID" class="border p-2 rounded" required />
+        <input type="text" placeholder="CMS ID" class="border p-2 rounded" />
+        <input type="date" class="border p-2 rounded" required />
+        <input type="tel" placeholder="Mobile Number" class="border p-2 rounded" required />
+        <input type="tel" placeholder="WhatsApp Number" class="border p-2 rounded" required />
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step" id="step3">
+      <h2 class="text-xl font-semibold mb-4">Step 3: Upload Documents</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <label class="block">Passport Size Photo<input type="file" class="border p-2 rounded mt-1" required></label>
+        <label class="block">ChalakDal Screenshot<input type="file" class="border p-2 rounded mt-1" required></label>
+        <label class="block">HRMS Screenshot<input type="file" class="border p-2 rounded mt-1" required></label>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step" id="step4">
+      <h2 class="text-xl font-semibold mb-4">Step 4: Review & Submit</h2>
+      <p class="text-gray-600 mb-4">Please make sure all entered details are correct. Click Submit to complete your Join Request.</p>
+      <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded">
+        ✅ Submit Request
+      </button>
+    </div>
+
+    <!-- Navigation -->
+    <div class="flex justify-between mt-6">
+      <button type="button" id="prevBtn" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hidden">⬅ Back</button>
+      <button type="button" id="nextBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Next ➡</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  const steps = document.querySelectorAll(".step");
+  const nextBtn = document.getElementById("nextBtn");
+  const prevBtn = document.getElementById("prevBtn");
+  let currentStep = 0;
+
+  function showStep(n) {
+    steps.forEach((step, index) => {
+      step.classList.toggle("active", index === n);
+    });
+    prevBtn.classList.toggle("hidden", n === 0);
+    nextBtn.innerText = n === steps.length - 1 ? "Finish" : "Next ➡";
+  }
+
+  nextBtn.addEventListener("click", () => {
+    if (currentStep < steps.length - 1) {
+      currentStep++;
+      showStep(currentStep);
+    } else {
+      document.getElementById("joinForm").submit();
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+    }
+  });
+
+  const zoneSelect = document.getElementById("zone");
+  const divisionSelect = document.getElementById("division");
+  const hqSelect = document.getElementById("hq");
+
+  const railways = {
+    "CR - Central Railway": {
+      "Mumbai": ["Mumbai CSMT", "Kurla", "Thane", "Wadala", "Panvel"],
+      "Bhusawal": ["Bhusawal", "Jalgaon", "Amalner", "Manmad", "Chalisgaon"],
+      "Nagpur": ["Nagpur", "Ajni", "Itwari", "Gondia", "Wardha"],
+      "Pune": ["Pune", "Satara", "Miraj", "Baramati", "Solapur"],
+      "Solapur": ["Solapur", "Daund", "Kurduwadi", "Osmanabad", "Pandharpur"]
+    },
+    "ER - Eastern Railway": {
+      "Howrah": ["Howrah", "Santragachi", "Bandel", "Tikiapara", "Liluah"],
+      "Sealdah": ["Sealdah", "Dum Dum", "Budge Budge", "Sonarpur", "Ballygunge"],
+      "Asansol": ["Asansol", "Durgapur", "Burnpur", "Jhajha", "Chittaranjan"],
+      "Malda": ["Malda", "Sahibganj", "Bhagalpur", "New Farakka", "Rampurhat"]
+    },
+    "NR - Northern Railway": {
+      "Delhi": ["NDLS", "DLI", "Sadar Bazar", "Shakur Basti", "Tilak Bridge"],
+      "Ambala": ["Ambala", "Chandigarh", "Yamunanagar", "Kurukshetra", "Kalka"],
+      "Firozpur": ["Firozpur", "Bathinda", "Amritsar", "Jalandhar", "Pathankot"],
+      "Lucknow": ["Lucknow", "Sitapur", "Hardoi", "Barabanki", "Raebareli"],
+      "Moradabad": ["Moradabad", "Rampur", "Bareilly", "Shahjahanpur", "Haldwani"]
+    },
+    "WR - Western Railway": {
+      "Mumbai Central": ["Mumbai Central", "Bandra", "Churchgate", "Dahisar", "Borivali"],
+      "Vadodara": ["Vadodara", "Godhra", "Dahod", "Anand", "Chhayapuri"],
+      "Ratlam": ["Ratlam", "Mandsaur", "Ujjain", "Neemuch", "Nagda"],
+      "Ahmedabad": ["Ahmedabad", "Sabarmati", "Maninagar", "Mehsana", "Gandhidham"],
+      "Rajkot": ["Rajkot", "Porbandar", "Jamnagar", "Bhavnagar", "Botad"]
+    }
+  };
+
+  function populateDropdown(select, options) {
+    select.innerHTML = '<option value="" disabled selected>Select</option>';
+    options.forEach(opt => {
+      const option = document.createElement("option");
+      option.value = opt;
+      option.textContent = opt;
+      select.appendChild(option);
+    });
+  }
+
+  // Populate Zones
+  populateDropdown(zoneSelect, Object.keys(railways));
+
+  zoneSelect.addEventListener("change", () => {
+    const zone = zoneSelect.value;
+    const divisions = Object.keys(railways[zone]);
+    populateDropdown(divisionSelect, divisions);
+    hqSelect.innerHTML = '<option value="" disabled selected>Select HQ</option>';
+  });
+
+  divisionSelect.addEventListener("change", () => {
+    const zone = zoneSelect.value;
+    const division = divisionSelect.value;
+    const hqs = railways[zone][division];
+    populateDropdown(hqSelect, hqs);
+  });
+
+  showStep(currentStep);
+</script>
+
+</body>
+</html>

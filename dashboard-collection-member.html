@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Collection Member Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+<!-- Header -->
+<div class="p-6 flex justify-between items-center bg-white shadow">
+  <h1 class="text-2xl font-bold text-blue-900">💼 Collection Member Dashboard</h1>
+  <button class="text-sm text-blue-600">Logout</button>
+</div>
+
+<!-- Assigned Members Section -->
+<div class="px-6 mt-6">
+  <h2 class="text-xl font-bold mb-4 text-gray-800">👥 Assigned Members</h2>
+  <div class="overflow-auto bg-white rounded-xl shadow">
+    <table class="min-w-full text-left text-sm">
+      <thead class="bg-blue-100 text-blue-800">
+        <tr>
+          <th class="px-6 py-3">Name</th>
+          <th class="px-6 py-3">SFA ID</th>
+          <th class="px-6 py-3">Last Payment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b">
+          <td class="px-6 py-4">Ravi Kumar</td>
+          <td class="px-6 py-4">SFA1221</td>
+          <td class="px-6 py-4">Feb 2025</td>
+        </tr>
+        <tr class="border-b">
+          <td class="px-6 py-4">Sunita Yadav</td>
+          <td class="px-6 py-4">SFA1047</td>
+          <td class="px-6 py-4">Jan 2025</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Upload Payment Proof -->
+<div class="px-6 mt-10">
+  <h2 class="text-xl font-bold mb-4 text-gray-800">📤 Upload Payment Proof</h2>
+  <div class="bg-white p-4 rounded-xl shadow">
+    <form>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="text" placeholder="Member SFA ID" class="border p-2 rounded w-full">
+        <input type="month" class="border p-2 rounded w-full">
+        <input type="file" accept="image/*,application/pdf" class="border p-2 rounded w-full md:col-span-2">
+      </div>
+      <button type="submit" class="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Add/Remove Member Request -->
+<div class="px-6 mt-10">
+  <h2 class="text-xl font-bold mb-4 text-gray-800">➕➖ Add/Remove Member</h2>
+  <div class="bg-white p-4 rounded-xl shadow">
+    <form>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <select class="border p-2 rounded w-full">
+          <option selected disabled>Select Action</option>
+          <option>Add Member</option>
+          <option>Remove Member</option>
+        </select>
+        <input type="text" placeholder="SFA ID" class="border p-2 rounded w-full">
+        <input type="text" placeholder="Reason" class="border p-2 rounded w-full md:col-span-2">
+      </div>
+      <button type="submit" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+        Send Request
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Messages Section -->
+<div class="px-6 mt-10 mb-10">
+  <h2 class="text-xl font-bold mb-4 text-gray-800">💬 Messages with Lobby Admin</h2>
+  <div class="bg-white p-4 rounded-xl shadow space-y-4 max-h-[300px] overflow-y-auto">
+    <div class="text-sm text-gray-700 bg-blue-50 p-2 rounded">📨 You: Uploaded payment for Jan</div>
+    <div class="text-sm text-gray-700 bg-green-50 p-2 rounded">✅ Admin: Got it, thank you!</div>
+  </div>
+
+  <form class="mt-4 flex gap-2">
+    <input type="text" placeholder="Type your message..." class="flex-1 border p-2 rounded">
+    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+      Send
+    </button>
+  </form>
+</div>
+</body>
+</html>
