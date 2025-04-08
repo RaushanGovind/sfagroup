@@ -20,20 +20,37 @@
 
 <!-- Form Container -->
 <div class="max-w-5xl mx-auto bg-white p-6 mt-6 rounded-xl shadow">
+
+  <div class="flex justify-between text-sm text-gray-600 mb-2 font-medium">
+    <span>Step 1: HQ</span>
+    <span>Step 2: Personal Info</span>
+    <span>Step 3: Upload Docs</span>
+    <span>Step 4: Review</span>
+  </div>
+  
+  <!-- Progress Bar -->
+  <div class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
+    <div id="progress" class="bg-blue-600 h-2.5 rounded-full" style="width: 25%"></div>
+  </div>
+
+  <!-- Selected Location Display -->
+  <div class="text-sm text-gray-600 mb-6">
+    <strong>Selected Location:</strong>
+    <span id="selectedRailway">-</span> | 
+    <span id="selectedDivision">-</span> | 
+    <span id="selectedHQ">-</span>
+  </div>
+
   <form id="joinForm">
+    <input type="hidden" name="sfaId" id="sfaId" />
+
     <!-- Step 1 -->
     <div class="step active" id="step1">
-      <h2 class="text-xl font-semibold mb-4">Step 1: Select Location of your Heqd Quarter</h2>
-      <div class="grid md:grid-cols-3 gap-4">
-        <select id="zone" class="border p-2 rounded" required>
-          <option value="" disabled selected>Select Railway Zone</option>
-        </select>
-        <select id="division" class="border p-2 rounded" required>
-          <option value="" disabled selected>Select Division</option>
-        </select>
-        <select id="hq" class="border p-2 rounded" required>
-          <option value="" disabled selected>Select HQ</option>
-        </select>
+      <h2 class="text-xl font-semibold mb-4">Step 1: Select Your HQ Location</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <select id="zone" class="border p-2 rounded" required></select>
+        <select id="division" class="border p-2 rounded" required></select>
+        <select id="hq" class="border p-2 rounded" required></select>
       </div>
     </div>
 
@@ -41,13 +58,35 @@
     <div class="step" id="step2">
       <h2 class="text-xl font-semibold mb-4">Step 2: Personal Info</h2>
       <div class="grid md:grid-cols-3 gap-4">
-        <input type="text" placeholder="Full Name" class="border p-2 rounded" required />
-        <input type="text" placeholder="PF No" class="border p-2 rounded" required />
-        <input type="text" placeholder="HRMS ID" class="border p-2 rounded" required />
-        <input type="text" placeholder="CMS ID" class="border p-2 rounded" />
-        <input type="date" class="border p-2 rounded" required />
-        <input type="tel" placeholder="Mobile Number" class="border p-2 rounded" required />
-        <input type="tel" placeholder="WhatsApp Number" class="border p-2 rounded" required />
+        <input type="text" placeholder="Full Name" name="name" class="border p-2 rounded" required />
+        <input type="text" placeholder="Father's Name" name="fatherName" class="border p-2 rounded" required />
+        <input type="text" placeholder="PF No" name="pfNumber" class="border p-2 rounded" pattern="^[A-Z0-9]+$" required />
+        <input type="text" placeholder="HRMS ID" name="hrmsId" class="border p-2 rounded" pattern="^[A-Z]{6}$" required />
+        <input type="text" placeholder="CMS ID" name="cmsId" class="border p-2 rounded" pattern="^[A-Z]{3,4}[0-9]+$" required />
+        <input type="text" placeholder="Date of Birth (DDMMYY)" name="dob" class="border p-2 rounded" pattern="^\d{6}$" required />
+        <input type="tel" placeholder="Mobile Number" name="contact" class="border p-2 rounded" pattern="^\d{10}$" required />
+        <input type="tel" placeholder="WhatsApp Number" name="whatsapp" class="border p-2 rounded" pattern="^\d{10}$" required />
+        <input type="email" placeholder="Email ID" name="email" class="border p-2 rounded" required />
+        <select name="designation" class="border p-2 rounded" required>
+          <option value="" disabled selected>Select Designation</option>
+          <option value="Loco Pilot">Loco Pilot</option>
+          <option value="Assistant Loco Pilot">Assistant Loco Pilot</option>
+          <option value="Guard">Guard</option>
+          <option value="Motorman">Motorman</option>
+          <option value="Supervisor">Supervisor</option>
+        </select>
+        <select name="bloodGroup" class="border p-2 rounded" required>
+          <option value="" disabled selected>Select Blood Group</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+        </select>
+        <input type="date" name="joinDate" class="border p-2 rounded" required />
       </div>
     </div>
 
@@ -55,16 +94,24 @@
     <div class="step" id="step3">
       <h2 class="text-xl font-semibold mb-4">Step 3: Upload Documents</h2>
       <div class="grid md:grid-cols-2 gap-4">
-        <label class="block">Passport Size Photo<input type="file" class="border p-2 rounded mt-1" required></label>
-        <label class="block">ChalakDal Screenshot<input type="file" class="border p-2 rounded mt-1" required></label>
-        <label class="block">HRMS Screenshot<input type="file" class="border p-2 rounded mt-1" required></label>
+        <label class="block">Passport Size Photo<input type="file" name="photo" class="border p-2 rounded mt-1" accept="image/*" required></label>
+        <label class="block">ChalakDal Screenshot<input type="file" name="chalakDal" class="border p-2 rounded mt-1" accept="image/*,application/pdf" required></label>
+        <label class="block">HRMS Screenshot<input type="file" name="hrmsScreenshot" class="border p-2 rounded mt-1" accept="image/*,application/pdf" required></label>
       </div>
     </div>
 
     <!-- Step 4 -->
     <div class="step" id="step4">
-      <h2 class="text-xl font-semibold mb-4">Step 4: Review & Submit</h2>
-      <p class="text-gray-600 mb-4">Please make sure all entered details are correct. Click Submit to complete your Join Request.</p>
+      <h2 class="text-xl font-semibold mb-4">Step 4: Nominee & Review</h2>
+      <div class="mb-4">
+        <label class="block font-medium">Nominee Details</label>
+        <div class="grid grid-cols-3 gap-4 mb-2">
+          <input type="text" name="nomineeName" placeholder="Nominee Name" class="border p-2 rounded" required />
+          <input type="text" name="nomineeRelation" placeholder="Relation" class="border p-2 rounded" required />
+          <input type="number" name="nomineePercentage" placeholder="Percentage (%)" class="border p-2 rounded" required />
+        </div>
+      </div>
+      <p class="text-gray-600 mb-4">Please make sure all details are correct. Click Submit to complete your Join Request.</p>
       <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded">
         ✅ Submit Request
       </button>
@@ -82,7 +129,15 @@
   const steps = document.querySelectorAll(".step");
   const nextBtn = document.getElementById("nextBtn");
   const prevBtn = document.getElementById("prevBtn");
+  const progress = document.getElementById("progress");
+  const form = document.getElementById("joinForm");
+
   let currentStep = 0;
+
+  function updateProgressBar(step) {
+    const percentage = ((step + 1) / steps.length) * 100;
+    progress.style.width = percentage + "%";
+  }
 
   function showStep(n) {
     steps.forEach((step, index) => {
@@ -90,16 +145,42 @@
     });
     prevBtn.classList.toggle("hidden", n === 0);
     nextBtn.innerText = n === steps.length - 1 ? "Finish" : "Next ➡";
+    updateProgressBar(n);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   nextBtn.addEventListener("click", () => {
-    if (currentStep < steps.length - 1) {
-      currentStep++;
-      showStep(currentStep);
-    } else {
-      document.getElementById("joinForm").submit();
+  const inputs = steps[currentStep].querySelectorAll("input, select");
+  for (let input of inputs) {
+    if (!input.checkValidity()) {
+      input.reportValidity();
+      return;
     }
+  }
+  if (currentStep < steps.length - 1) {
+    currentStep++;
+    clearStepFields(currentStep);  // <-- clear the next step’s fields
+    showStep(currentStep);
+    document.querySelectorAll('input[type="file"]').forEach(input => {
+  input.addEventListener('change', () => {
+    const parent = input.parentNode;
+    const oldSpan = parent.querySelector(".filename-preview");
+    if (oldSpan) oldSpan.remove();
+
+    const span = document.createElement("span");
+    span.className = "filename-preview text-xs text-gray-500 ml-2";
+    span.textContent = input.files.length ? input.files[0].name : "No file selected";
+    parent.appendChild(span);
   });
+});
+
+
+  } else {
+    form.submit();
+  }
+}
+);
+
 
   prevBtn.addEventListener("click", () => {
     if (currentStep > 0) {
@@ -111,39 +192,43 @@
   const zoneSelect = document.getElementById("zone");
   const divisionSelect = document.getElementById("division");
   const hqSelect = document.getElementById("hq");
+  const selectedRailway = document.getElementById("selectedRailway");
+  const selectedDivision = document.getElementById("selectedDivision");
+  const selectedHQ = document.getElementById("selectedHQ");
+  const sfaIdInput = document.getElementById("sfaId");
 
   const railways = {
-    "CR - Central Railway": {
-      "Mumbai": ["Mumbai CSMT", "Kurla", "Thane", "Wadala", "Panvel"],
-      "Bhusawal": ["Bhusawal", "Jalgaon", "Amalner", "Manmad", "Chalisgaon"],
-      "Nagpur": ["Nagpur", "Ajni", "Itwari", "Gondia", "Wardha"],
-      "Pune": ["Pune", "Satara", "Miraj", "Baramati", "Solapur"],
-      "Solapur": ["Solapur", "Daund", "Kurduwadi", "Osmanabad", "Pandharpur"]
+    "NR": {
+      "Delhi": ["NDLS", "DEE", "DLI", "SNP", "NZM"],
+      "Lucknow": ["LKO", "CNB", "MB", "BE", "FZR"]
     },
-    "ER - Eastern Railway": {
-      "Howrah": ["Howrah", "Santragachi", "Bandel", "Tikiapara", "Liluah"],
-      "Sealdah": ["Sealdah", "Dum Dum", "Budge Budge", "Sonarpur", "Ballygunge"],
-      "Asansol": ["Asansol", "Durgapur", "Burnpur", "Jhajha", "Chittaranjan"],
-      "Malda": ["Malda", "Sahibganj", "Bhagalpur", "New Farakka", "Rampurhat"]
+    "CR": {
+      "Mumbai": ["CSTM", "DR", "CLA", "LTT", "KYN"],
+      "Bhusawal": ["BSL", "MMR", "ET", "NGP", "AK"]
     },
-    "NR - Northern Railway": {
-      "Delhi": ["NDLS", "DLI", "DEE", "SSB", "TKD", "ANVT", "GZB", "JIND", "ROK", "PNP", "MTC", "KRJN", "GHH", "NZM"],
-      "Ambala": ["Ambala", "Chandigarh", "Yamunanagar", "Kurukshetra", "Kalka"],
-      "Firozpur": ["Firozpur", "Bathinda", "Amritsar", "Jalandhar", "Pathankot"],
-      "Lucknow": ["Lucknow", "Sitapur", "Hardoi", "Barabanki", "Raebareli"],
-      "Moradabad": ["Moradabad", "Rampur", "Bareilly", "Shahjahanpur", "Haldwani"]
-    },
-    "WR - Western Railway": {
-      "Mumbai Central": ["Mumbai Central", "Bandra", "Churchgate", "Dahisar", "Borivali"],
-      "Vadodara": ["Vadodara", "Godhra", "Dahod", "Anand", "Chhayapuri"],
-      "Ratlam": ["Ratlam", "Mandsaur", "Ujjain", "Neemuch", "Nagda"],
-      "Ahmedabad": ["Ahmedabad", "Sabarmati", "Maninagar", "Mehsana", "Gandhidham"],
-      "Rajkot": ["Rajkot", "Porbandar", "Jamnagar", "Bhavnagar", "Botad"]
+    "WR": {
+      "Mumbai Central": ["MMCT", "BCT", "ST", "ADI", "VR"],
+      "Ratlam": ["RTM", "UJN", "INDB", "BRC", "GNC"]
     }
+    // Add remaining zones & divisions here
   };
 
-  function populateDropdown(select, options) {
-    select.innerHTML = '<option value="" disabled selected>Select</option>';
+  function clearStepFields(stepIndex) {
+  const fields = steps[stepIndex].querySelectorAll("input, select");
+  fields.forEach(field => {
+    if (field.type === "file") {
+      field.value = "";
+    } else if (field.tagName === "SELECT") {
+      field.selectedIndex = 0;
+    } else {
+      field.value = "";
+    }
+  });
+}
+
+
+  function populateDropdown(select, options, placeholder = "Select") {
+    select.innerHTML = `<option value="" disabled selected>${placeholder}</option>`;
     options.forEach(opt => {
       const option = document.createElement("option");
       option.value = opt;
@@ -152,22 +237,42 @@
     });
   }
 
-  // Populate Zones
-  populateDropdown(zoneSelect, Object.keys(railways));
+  populateDropdown(zoneSelect, Object.keys(railways), "Select Railway Zone");
 
-  zoneSelect.addEventListener("change", () => {
-    const zone = zoneSelect.value;
-    const divisions = Object.keys(railways[zone]);
-    populateDropdown(divisionSelect, divisions);
-    hqSelect.innerHTML = '<option value="" disabled selected>Select HQ</option>';
+  divisionSelect.disabled = true;
+hqSelect.disabled = true;
+
+zoneSelect.addEventListener("change", () => {
+  const zone = zoneSelect.value;
+  const divisions = Object.keys(railways[zone]);
+  populateDropdown(divisionSelect, divisions, "Select Division");
+  divisionSelect.disabled = false;
+
+  populateDropdown(hqSelect, [], "Select HQ");
+  hqSelect.disabled = true;
+
+  selectedRailway.textContent = zone;
+  selectedDivision.textContent = "-";
+  selectedHQ.textContent = "-";
+});
+
+divisionSelect.addEventListener("change", () => {
+  const zone = zoneSelect.value;
+  const division = divisionSelect.value;
+  const hqs = railways[zone][division];
+  populateDropdown(hqSelect, hqs, "Select HQ");
+  hqSelect.disabled = false;
+
+  selectedDivision.textContent = division;
+  selectedHQ.textContent = "-";
+});
+
+
+  hqSelect.addEventListener("change", () => {
+    selectedHQ.textContent = hqSelect.value;
   });
 
-  divisionSelect.addEventListener("change", () => {
-    const zone = zoneSelect.value;
-    const division = divisionSelect.value;
-    const hqs = railways[zone][division];
-    populateDropdown(hqSelect, hqs);
-  });
+  sfaIdInput.value = "SFA" + Date.now() + Math.floor(Math.random() * 1000);
 
   showStep(currentStep);
 </script>
